@@ -1,24 +1,26 @@
 package com.tripndrive.shuttle.model;
 
+import java.io.Serializable;
+
 /**
  * Created by LG on 23/11/2015.
  */
-public class Passenger {
+public class Passenger implements Serializable{
 
     public enum State{
         waiting,
         picked
     }
 
-    private Long id;
+    private String id;
     private String name;
     private State state;
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -38,7 +40,7 @@ public class Passenger {
         this.state = state;
     }
 
-    public Passenger(Long id, String name, State state) {
+    public Passenger(String id, String name, State state) {
         this.id = id;
         this.name = name;
         this.state = state;

@@ -34,10 +34,10 @@ public class TndShuttleBackApplication {
 
             RedisTemplate rt = new RedisTemplate<>();
             rt.setConnectionFactory(redisConnectionFactory);
-            rt.setKeySerializer(new StringRedisSerializer());
-            rt.setValueSerializer(new StringRedisSerializer());
-            rt.setHashKeySerializer(new StringRedisSerializer());
-            rt.setHashValueSerializer(new StringRedisSerializer());
+//            rt.setKeySerializer(new StringRedisSerializer());
+//            rt.setValueSerializer(new StringRedisSerializer());
+//            rt.setHashKeySerializer(new StringRedisSerializer());
+//            rt.setHashValueSerializer(new StringRedisSerializer());
 
             return rt;
         }
