@@ -1,0 +1,19 @@
+*.class
+target
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# Intellij
+.idea
+*.iml
+*.eml
+#workspace.xml
+#tasks.xml
+
+#nodes and bower
+node_modules
+bower_components
+vendors
