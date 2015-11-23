@@ -46,4 +46,20 @@ public class PassengerController {
         return passenger;
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public Passenger update(@PathVariable Long id, @RequestParam(value = "state") Passenger.State state){
+
+        Passenger p = passengerMap.get(id);
+
+        if(p == null){
+            return null ;
+        }
+
+        p.setState(state);
+
+        passengerMap.put(id, p);
+
+        return p;
+    }
+
 }
