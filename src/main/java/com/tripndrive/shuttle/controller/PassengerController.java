@@ -1,5 +1,6 @@
 package com.tripndrive.shuttle.controller;
 
+import com.tripndrive.shuttle.exception.ThisIsBadException;
 import com.tripndrive.shuttle.model.Passenger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -34,10 +35,10 @@ public class PassengerController {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public Passenger create(@RequestBody Passenger passenger){
+    public Passenger create(@RequestBody Passenger passenger) throws ThisIsBadException {
 
-        if(passenger == null || passenger.getName() == null || passenger.getState() == null){
-            return null;
+        if(passenger == null || passenger.getName() == null || passenger.getState() == null || passengerMap.get(passenger.getId()) != null){
+           throw new ThisIsBadException();
         }
 
         passenger.setId(++nextId);
@@ -47,12 +48,12 @@ public class PassengerController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public Passenger update(@PathVariable Long id, @RequestParam(value = "state") Passenger.State state){
+    public Passenger update(@PathVariable Long id, @RequestParam(value = "state") Passenger.State state) throws ThisIsBadException {
 
         Passenger p = passengerMap.get(id);
 
         if(p == null){
-            return null ;
+            throw new ThisIsBadException();
         }
 
         p.setState(state);
